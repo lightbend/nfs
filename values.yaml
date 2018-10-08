@@ -1,9 +1,10 @@
 namespace: nfs
+createNamespace: true
 
 gceStorage: 5Gi
 pvcStorage: 1Mi
 pvStorage: 1Mi
 
-pvName: nfs-pv
-pvcName: nfs-pvc
+pvName: nfs-persistent-volume
+pvcName: nfs-persistent-volume-claim
 nfsServerServiceName: nfs-server
