@@ -12,6 +12,7 @@ spec:
       labels:
         role: {{ .Values.nfsServerServiceName }}
     spec:
+      serviceAccountName: {{ .Values.serviceAccountName }}
       containers:
       - name: {{ .Values.nfsServerServiceName }}
         image: k8s.gcr.io/volume-nfs:0.8
