@@ -1,0 +1,36 @@
+{{- if .Values.onOpenShift }}
+apiVersion: v1
+kind: SecurityContextConstraints
+metadata:
+  name: {{ .Values.podSecurityPolicyName }}
+allowHostDirVolumePlugin: true
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPID: false
+allowHostPorts: false
+allowPrivilegedContainer: true
+allowedCapabilities:
+  - DAC_READ_SEARCH
+  - SYS_RESOURCE
+defaultAddCapabilities: null
+priority: null
+requiredDropCapabilities:
+  - KILL
+  - MKNOD
+  - SYS_CHROOT
+runAsUser:
+  type: RunAsAny
+fsGroup:
+  type: MustRunAs
+seLinuxContext:
+  type: MustRunAs
+supplementalGroups:
+  type: RunAsAny
+readOnlyRootFilesystem: false
+volumes:
+  - configMap
+  - downwardAPI
+  - emptyDir
+  - persistentVolumeClaim
+  - secret
+{{- end }}

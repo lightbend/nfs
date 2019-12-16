@@ -1,11 +1,20 @@
-namespace: nfs
-createNamespace: true
-serviceAccountName: default
+onOpenShift: true
 
-gceStorage: 5Gi
 pvcStorage: 1Gi
-pvStorage: 1Gi
+pvcName: nfs-pvc
+storageClassName: nfs-sc
 
-pvName: nfs-persistent-volume
-pvcName: nfs-persistent-volume-claim
-nfsServerServiceName: nfs-server
+serviceAccount:
+  create: true
+  name:
+
+nfsProvisionerImage: quay.io/kubernetes_incubator/nfs-provisioner:v2.2.2
+imagePullPolicy: IfNotPresent
+nfsProvisionerName: lightbend.com/nfs
+
+podSecurityPolicyName: nfs-provisioner
+
+## Node labels for pod assignment
+## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+##
+nodeSelector: {}
