@@ -6,11 +6,10 @@ This Helm chart is based on the [external-storage](https://github.com/kubernetes
 
 #### Installing on OpenShift
 
-To Install the chart on OpenShift, run:
+To Install the chart on OpenShift, clone the repo and run:
 
 ```bash
-$ helm repo add lightbend https://repo.lightbend.com/helm-charts
-$ helm install lightbend/fdp-nfs --namespace <provisioner-namespace>
+$ helm install ./fdp-nfs --namespace <provisioner-namespace>
 ```
 
 and then run:
@@ -26,9 +25,10 @@ to add the  `nfs-provisioner` security context constraint (*SCC*) created during
 No SCC is involved in this case:
 
 ```bash
-$ helm repo add lightbend https://repo.lightbend.com/helm-charts
-$ helm install lightbend/fdp-nfs --namespace <provisioner-namespace> --set onOpenShift=false
+$ helm install ./fdp-nfs --namespace <provisioner-namespace> --set onOpenShift=false
 ```
+
+Note: you can use a released artifact from Github releases instead when invoking `helm install`.
 
 ### Creating an NFS backed Persistent Volume Claim
 
@@ -49,5 +49,3 @@ spec:
 ```
 
 An NFS PV will be automatically provisioned and bound to the `testpvc`. To provision another PV, following the same example by using the `nfs-sc` as the StorageClass for your PVC.
-
-
