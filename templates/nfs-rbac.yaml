@@ -15,7 +15,7 @@
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ include "fdp-nfs.fullname" . }}
+  name: {{ include "nfs.fullname" . }}
 rules:
   - apiGroups: [""]
     resources: ["persistentvolumes"]
@@ -40,20 +40,20 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ include "fdp-nfs.fullname" . }}
+  name: {{ include "nfs.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ include "fdp-nfs.serviceAccountName" . }}
+    name: {{ include "nfs.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
-  name: {{ include "fdp-nfs.fullname" . }}
+  name: {{ include "nfs.fullname" . }}
   apiGroup: rbac.authorization.k8s.io
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ include "fdp-nfs.fullname" . }}
+  name: {{ include "nfs.fullname" . }}
 rules:
   - apiGroups: [""]
     resources: ["endpoints"]
@@ -62,12 +62,12 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ include "fdp-nfs.fullname" . }}
+  name: {{ include "nfs.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ include "fdp-nfs.serviceAccountName" . }}
+    name: {{ include "nfs.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
-  name: {{ include "fdp-nfs.fullname" . }}
+  name: {{ include "nfs.fullname" . }}
   apiGroup: rbac.authorization.k8s.io

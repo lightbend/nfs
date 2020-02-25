@@ -15,11 +15,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ include "fdp-nfs.fullname" . }}
+  name: {{ include "nfs.fullname" . }}
   labels:
-    app: {{ include "fdp-nfs.fullname" . }}
-    app.kubernetes.io/name: {{ include "fdp-nfs.name" . }}
-    helm.sh/chart: {{ include "fdp-nfs.chart" . }}
+    app: {{ include "nfs.fullname" . }}
+    app.kubernetes.io/name: {{ include "nfs.name" . }}
+    helm.sh/chart: {{ include "nfs.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
@@ -34,4 +34,4 @@ spec:
       port: 111
       protocol: UDP
   selector:
-    app: {{ include "fdp-nfs.fullname" . }}
+    app: {{ include "nfs.fullname" . }}

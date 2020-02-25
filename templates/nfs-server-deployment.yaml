@@ -15,7 +15,7 @@
 kind: Deployment
 apiVersion: apps/v1beta1
 metadata:
-  name: {{ include "fdp-nfs.fullname" . }}
+  name: {{ include "nfs.fullname" . }}
 spec:
   replicas: 1
   strategy:
@@ -23,11 +23,11 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ include "fdp-nfs.fullname" . }}
+        app: {{ include "nfs.fullname" . }}
     spec:
-      serviceAccountName: {{ include "fdp-nfs.serviceAccountName" . }}
+      serviceAccountName: {{ include "nfs.serviceAccountName" . }}
       containers:
-        - name: {{ include "fdp-nfs.fullname" . }}
+        - name: {{ include "nfs.fullname" . }}
           image: {{ .Values.nfsProvisionerImage }}
           ports:
             - name: nfs
@@ -53,7 +53,7 @@ spec:
                 fieldRef:
                   fieldPath: status.podIP
             - name: SERVICE_NAME
-              value: {{ include "fdp-nfs.fullname" . }}
+              value: {{ include "nfs.fullname" . }}
             - name: POD_NAMESPACE
               valueFrom:
                 fieldRef:

@@ -22,7 +22,7 @@ serviceAccount:
   create: true
   name:
 
-nfsProvisionerImage: quay.io/kubernetes_incubator/nfs-provisioner:v2.2.2
+nfsProvisionerImage: quay.io/kubernetes_incubator/nfs-provisioner:v2.3.0
 imagePullPolicy: IfNotPresent
 nfsProvisionerName: lightbend.com/nfs
 
